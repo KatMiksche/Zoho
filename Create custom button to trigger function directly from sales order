@@ -1,0 +1,13 @@
+// custom button for Sales Order in detail view to trigger custom function so_invoice_payment
+
+void Trigger_Workflow_INV_PAY (Map organization, Map user, String SO_number) {
+
+//This is a sample function. It will display the salesorder number.
+so_invoice_payment(salesorder,organization,user);
+number = salesorder.get("salesorder_number");
+resultMap = Map();
+resultMap.put("message","Salesorder number - " + number);
+resultMap.put("code",0);
+// 0 - Success ; Other than 0 will consider as failure
+return resultMap;
+}

@@ -1,0 +1,18 @@
+// custom button for Sales Order list view to trigger custom function so_invoice_payment
+
+void Trigger_Workflow (Map organization, Map user, String SO_number) {
+
+/*
+This is a sample function. Uncomment to execute or make changes to this function.*/
+organizationID = organization.get("organization_id");
+searchParam = {"salesorder_number":SO_number};
+salesorder = zoho.books.getRecords("Salesorders",organizationID,searchParam,"zbooks");
+salesorder = salesorder.get("salesorders");
+salesorder = salesorder.get(0);
+//info salesorder;
+so_invoice_payment(salesorder,organization,user);
+resultMap = Map();
+resultMap.put("code",0);
+// 0 - Success ; Other than 0 will consider as failure
+return resultMap;
+}
